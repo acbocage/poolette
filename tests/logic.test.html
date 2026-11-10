@@ -55,6 +55,12 @@ t('Lautrec 11/11 16h–17h : fermé', r.state === 'closed', r.headline);
 r = ev('toulouse-lautrec', { mode: 'day', dateStr: '2026-12-24' });
 t('Lautrec 24/12 : période Noël (9h–16h)', r.state === 'open' && r.slots[0][0] === 540 && r.slots[0][1] === 960, JSON.stringify(r.slots));
 
+r = ev('toulouse-lautrec', { mode: 'day', dateStr: '2026-10-20' });
+t('Lautrec 20/10 : période Toussaint (section « Toussaint et Noël », 9h–16h)', r.state === 'open' && r.slots[0][0] === 540 && r.slots[0][1] === 960, JSON.stringify(r.slots));
+
+r = ev('alex-jany-toulouse', { mode: 'day', dateStr: '2026-10-20' });
+t('Alex Jany 20/10 : repli sur « vacances » (12h–19h)', r.state === 'open' && r.slots[0][0] === 720, JSON.stringify(r.slots));
+
 r = ev('alex-jany-toulouse', { mode: 'day', dateStr: '2026-12-24' });
 t('Alex Jany 24/12 : repli sur « vacances » (12h–19h)', r.state === 'open' && r.slots[0][0] === 720, JSON.stringify(r.slots));
 

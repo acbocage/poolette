@@ -74,22 +74,29 @@ def sha(text):
 
 
 # ------------------------------------------------- horaires : pages Toulouse
-def period_kind(title):
+def period_kinds(title):
+    """Une section peut couvrir plusieurs vacances (ex. « Toussaint et Noël ») : on renvoie tous les ids."""
     t = strip_accents(title).lower()
-    if "ete" in re.findall(r"[a-z]+", t) or "estival" in t:
-        if "hors ete" not in t and "hors-ete" not in t:
-            return "ete"
+    if ("ete" in re.findall(r"[a-z]+", t) or "estival" in t) and "hors ete" not in t and "hors-ete" not in t:
+        return ["ete"]
+    kinds = []
+    if "toussaint" in t or "automne" in t:
+        kinds.append("toussaint")
     if "noel" in t:
-        return "noel"
-    if "automne" in t or "hiver" in t or "toussaint" in t:
-        return "automne_hiver"
+        kinds.append("noel")
+    if "hiver" in t:
+        kinds.append("hiver")
+    if "automne" in t or "hiver" in t:
+        kinds.append("automne_hiver")
     if "printemps" in t:
-        return "printemps"
+        kinds.append("printemps")
+    if kinds:
+        return kinds
     if "vacances" in t:
-        return "vacances"
-    if "periode scolaire" in t or "scolaire" in t:
-        return "scolaire"
-    return None
+        return ["vacances"]
+    if "scolaire" in t:
+        return ["scolaire"]
+    return []
 
 
 TIME = r"(\d{1,2})\s*h\s*(\d{2})?"
@@ -147,8 +154,8 @@ def parse_toulouse_page(html):
     titles = list(re.finditer(r'<span class="accordion-button__text">(.*?)</span>', html, re.S))
     for i, t in enumerate(titles):
         title = html_to_text(t.group(1))
-        kind = period_kind(title)
-        if not kind:
+        kinds = period_kinds(title)
+        if not kinds:
             continue
         end = html.find("<!-- fin acc item -->", t.end())
         body = html[t.end(): end if end != -1 else t.end() + 6000]
@@ -174,7 +181,8 @@ def parse_toulouse_page(html):
         if found:
             schedule = {d: [[f"{s // 60:02d}:{s % 60:02d}", f"{e // 60:02d}:{e % 60:02d}"]
                             for s, e in merge_slots(minutes[d])] for d in DAYS}
-            periods[kind] = {"label": title, "schedule": schedule}
+            for kind in kinds:
+                periods.setdefault(kind, {"label": title, "schedule": schedule})
     en_bref = ""
     s = html.find("block__shorts__list")
     if s != -1:

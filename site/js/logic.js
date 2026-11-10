@@ -6,9 +6,10 @@ export const STALE_HOURS = 48;
 
 // Enchaînement des périodes quand une piscine n'a pas de tableau dédié à une vacance.
 const CHAIN = {
-  toussaint: ['automne_hiver', 'vacances'],
-  hiver: ['automne_hiver', 'vacances'],
+  toussaint: ['toussaint', 'automne_hiver', 'vacances'],
+  hiver: ['hiver', 'automne_hiver', 'vacances'],
   noel: ['noel', 'automne_hiver', 'vacances'],
+  // (les périodes sont stockées sous plusieurs ids quand une section couvre plusieurs vacances)
   printemps: ['printemps', 'vacances'],
   ete: ['ete'],
 };
