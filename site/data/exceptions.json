@@ -118,6 +118,156 @@
       "type": "closed",
       "note": "Fermée toute la journée",
       "source": "manual"
+    },
+    {
+      "pool_id": "bellevue",
+      "from": "2026-11-11",
+      "to": "2026-11-11",
+      "type": "hours",
+      "slots": [
+        [
+          "08:30",
+          "15:00"
+        ]
+      ],
+      "note": "Jour de l'Armistice, horaires exceptionnels",
+      "source": "llm"
+    },
+    {
+      "pool_id": "toulouse-lautrec",
+      "from": "2026-11-11",
+      "to": "2026-11-11",
+      "type": "hours",
+      "slots": [
+        [
+          "08:30",
+          "15:00"
+        ]
+      ],
+      "note": "Jour de l'Armistice, horaires exceptionnels",
+      "source": "llm"
+    },
+    {
+      "pool_id": "papus",
+      "from": "2026-11-11",
+      "to": "2026-11-11",
+      "type": "hours",
+      "slots": [
+        [
+          "08:30",
+          "15:00"
+        ]
+      ],
+      "note": "Jour de l'Armistice, horaires exceptionnels",
+      "source": "llm"
+    },
+    {
+      "pool_id": "leo-lagrange",
+      "from": "2026-11-11",
+      "to": "2026-11-11",
+      "type": "hours",
+      "slots": [
+        [
+          "12:00",
+          "18:30"
+        ]
+      ],
+      "note": "Jour de l'Armistice, horaires exceptionnels",
+      "source": "llm"
+    },
+    {
+      "pool_id": "jean-boiteux",
+      "from": "2026-11-11",
+      "to": "2026-11-11",
+      "type": "hours",
+      "slots": [
+        [
+          "12:00",
+          "18:30"
+        ]
+      ],
+      "note": "Jour de l'Armistice, horaires exceptionnels",
+      "source": "llm"
+    },
+    {
+      "pool_id": "yvonne-godard",
+      "from": "2026-11-11",
+      "to": "2026-11-11",
+      "type": "closed",
+      "note": "Bassin réservé à l'animation de jeux aquatiques",
+      "source": "llm"
+    },
+    {
+      "pool_id": "nakache",
+      "from": "2026-11-11",
+      "to": "2026-11-11",
+      "type": "closed",
+      "note": "Jour de l'Armistice",
+      "source": "llm"
+    },
+    {
+      "pool_id": "alex-jany-toulouse",
+      "from": "2026-11-11",
+      "to": "2026-11-11",
+      "type": "closed",
+      "note": "Jour de l'Armistice",
+      "source": "llm"
+    },
+    {
+      "pool_id": "alban-minville",
+      "from": "2026-11-11",
+      "to": "2026-11-11",
+      "type": "closed",
+      "note": "Jour de l'Armistice",
+      "source": "llm"
+    },
+    {
+      "pool_id": "leo-lagrange",
+      "from": "2026-11-14",
+      "to": "2026-11-15",
+      "type": "closed",
+      "note": "Manifestation sportive",
+      "source": "llm"
+    },
+    {
+      "pool_id": "alex-jany-toulouse",
+      "from": "2026-11-21",
+      "to": "2026-11-22",
+      "type": "closed",
+      "note": "Manifestation sportive",
+      "source": "llm"
+    },
+    {
+      "pool_id": "bellevue",
+      "from": "2026-11-25",
+      "to": "2026-11-25",
+      "type": "closed",
+      "note": "Bassin intérieur fermé 12h30-14h et 16h-17h, manifestation sportive",
+      "source": "llm"
+    },
+    {
+      "pool_id": "nakache",
+      "from": "2026-11-15",
+      "to": "2026-11-15",
+      "type": "closed",
+      "note": "Manifestation sportive",
+      "source": "llm"
+    },
+    {
+      "pool_id": "alban-minville",
+      "from": "2026-11-29",
+      "to": "2026-11-29",
+      "type": "closed",
+      "note": "Manifestation sportive",
+      "source": "llm"
+    },
+    {
+      "pool_id": "alban-minville",
+      "from": "2026-11-30",
+      "to": "2026-11-30",
+      "type": "closed",
+      "note": "Fermée au public de 7h à 9h, manifestation sportive",
+      "source": "llm"
     }
   ]
 }
