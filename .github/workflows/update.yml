@@ -1,0 +1,52 @@
+name: Poolette - mise à jour des horaires et déploiement
+
+on:
+  schedule:
+    - cron: "0 5 * * *"    # chaque jour, ~6h (hiver) / 7h (été) à Paris
+    - cron: "0 11 * * *"   # puis ~12h / 13h pour les annonces de dernière minute
+  workflow_dispatch:        # lancement manuel depuis l'onglet Actions
+  push:
+    branches: [main]
+    paths: ["site/**", "scripts/**", ".github/workflows/**"]
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: poolette
+  cancel-in-progress: false
+
+jobs:
+  update-and-deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Mettre à jour les horaires et le calendrier
+        run: python scripts/update_data.py
+        env:
+          # Facultatif mais nécessaire pour L'Union, les exceptions « En bref » et les pages libres.
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+
+      - name: Enregistrer les données dans le dépôt
+        run: |
+          git config user.name "poolette-bot"
+          git config user.email "poolette-bot@users.noreply.github.com"
+          git add site/data
+          git diff --cached --quiet || (git commit -m "Mise à jour des horaires" && git push)
+
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+      - id: deploy
+        uses: actions/deploy-pages@v4

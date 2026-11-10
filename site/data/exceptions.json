@@ -1,0 +1,123 @@
+{
+  "updated": "2026-11-10",
+  "exceptions": [
+    {
+      "pool_id": "alex-jany-toulouse",
+      "from": "2026-11-21",
+      "to": "2026-11-22",
+      "type": "closed",
+      "note": "Manifestation sportive",
+      "source": "manual"
+    },
+    {
+      "pool_id": "alex-jany-toulouse",
+      "from": "2026-11-11",
+      "to": "2026-11-11",
+      "type": "closed",
+      "note": "Jour de l'Armistice",
+      "source": "manual"
+    },
+    {
+      "pool_id": "alban-minville",
+      "from": "2026-11-11",
+      "to": "2026-11-11",
+      "type": "closed",
+      "note": "Jour de l'Armistice",
+      "source": "manual"
+    },
+    {
+      "pool_id": "nakache",
+      "from": "2026-11-11",
+      "to": "2026-11-11",
+      "type": "closed",
+      "note": "Jour de l'Armistice",
+      "source": "manual"
+    },
+    {
+      "pool_id": "bellevue",
+      "from": "2026-11-11",
+      "to": "2026-11-11",
+      "type": "hours",
+      "slots": [
+        [
+          "08:30",
+          "15:00"
+        ]
+      ],
+      "note": "Jour de l'Armistice (bassin nordique)",
+      "source": "manual"
+    },
+    {
+      "pool_id": "toulouse-lautrec",
+      "from": "2026-11-11",
+      "to": "2026-11-11",
+      "type": "hours",
+      "slots": [
+        [
+          "08:30",
+          "15:00"
+        ]
+      ],
+      "note": "Jour de l'Armistice",
+      "source": "manual"
+    },
+    {
+      "pool_id": "papus",
+      "from": "2026-11-11",
+      "to": "2026-11-11",
+      "type": "hours",
+      "slots": [
+        [
+          "08:30",
+          "15:00"
+        ]
+      ],
+      "note": "Jour de l'Armistice",
+      "source": "manual"
+    },
+    {
+      "pool_id": "leo-lagrange",
+      "from": "2026-11-11",
+      "to": "2026-11-11",
+      "type": "hours",
+      "slots": [
+        [
+          "12:00",
+          "18:30"
+        ]
+      ],
+      "note": "Jour de l'Armistice",
+      "source": "manual"
+    },
+    {
+      "pool_id": "jean-boiteux",
+      "from": "2026-11-11",
+      "to": "2026-11-11",
+      "type": "hours",
+      "slots": [
+        [
+          "12:00",
+          "18:30"
+        ]
+      ],
+      "note": "Jour de l'Armistice",
+      "source": "manual"
+    },
+    {
+      "pool_id": "yvonne-godard",
+      "from": "2026-11-11",
+      "to": "2026-11-11",
+      "type": "closed",
+      "note": "Réservée à une animation de jeux aquatiques",
+      "source": "manual"
+    },
+    {
+      "pool_id": "lunion",
+      "from": "2026-11-11",
+      "to": "2026-11-11",
+      "type": "closed",
+      "note": "Fermée toute la journée",
+      "source": "manual"
+    }
+  ]
+}

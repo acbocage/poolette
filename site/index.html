@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Poolette</title>
+  <meta name="description" content="Est-ce que la piscine est ouverte ? Demande à Poolette !">
+  <meta name="theme-color" content="#0a6e8e" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0c1c28" media="(prefers-color-scheme: dark)">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Poolette">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icons/icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="top">
+    <div class="brand">
+      <img src="icons/icon.svg" alt="" width="40" height="40">
+      <div>
+        <h1>Poolette</h1>
+        <p>Est-ce que la piscine est ouverte&nbsp;?</p>
+      </div>
+    </div>
+    <button id="btnLocate" class="loc" type="button" aria-label="Me localiser">
+      <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7Zm0 9.5A2.5 2.5 0 1 1 12 6.500a2.500 2.500 0 0 1 0 5Z"/></svg>
+      <span id="locLabel">Localisation…</span>
+    </button>
+  </header>
+
+  <section class="controls" aria-label="Choix du moment">
+    <div class="seg" id="moment" role="group" aria-label="Moment">
+      <button type="button" data-m="now" aria-pressed="true">Maintenant</button>
+      <button type="button" data-m="today" aria-pressed="false">Aujourd'hui</button>
+      <button type="button" data-m="tomorrow" aria-pressed="false">Demain</button>
+      <button type="button" data-m="date" aria-pressed="false">Autre date</button>
+    </div>
+
+    <div class="row" id="dateRow" hidden>
+      <label class="field">Date <input type="date" id="date"></label>
+    </div>
+
+    <div class="row" id="rangeRow" hidden>
+      <label class="switch"><input type="checkbox" id="useRange"><span class="track"></span><span>Plage horaire</span></label>
+      <span class="range" id="rangeInputs" hidden>
+        <label class="field">de <input type="time" id="from" value="12:00"></label>
+        <label class="field">à <input type="time" id="to" value="14:00"></label>
+      </span>
+    </div>
+
+    <div class="row between">
+      <label class="field grow">Rayon <input type="range" id="radius" min="1" max="20" step="1"><output id="radiusOut"></output></label>
+      <label class="switch compact"><input type="checkbox" id="onlyOpen"><span class="track"></span><span>Ouvertes</span></label>
+    </div>
+  </section>
+
+  <p id="summary" class="summary" aria-live="polite"></p>
+
+  <main id="list" class="list" aria-live="polite"></main>
+  <div id="map" class="map" hidden></div>
+
+  <footer class="foot">
+    <p id="fresh"></p>
+    <details>
+      <summary>Réglages</summary>
+      <label class="field">Orange quand il reste moins de
+        <select id="threshold">
+          <option value="30">30 min</option>
+          <option value="45">45 min</option>
+          <option value="60">60 min</option>
+          <option value="90">90 min</option>
+        </select>
+      </label>
+      <p class="small">Poolette lit les pages officielles des piscines chaque jour. « Ouvert » signifie ouvert au public : les créneaux par ligne d'eau ne sont pas publiés.</p>
+    </details>
+  </footer>
+
+  <nav class="viewbar" aria-label="Affichage">
+    <button type="button" data-v="list" aria-pressed="true">
+      <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M4 6h16v2H4V6Zm0 5h16v2H4v-2Zm0 5h16v2H4v-2Z"/></svg>Liste
+    </button>
+    <button type="button" data-v="map" aria-pressed="false">
+      <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="m9 3 6 2 5-2v16l-5 2-6-2-5 2V5l5-2Zm1 2.400v12.200l4 1.300V6.700l-4-1.300Z"/></svg>Carte
+    </button>
+  </nav>
+
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>

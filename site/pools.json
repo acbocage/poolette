@@ -1,0 +1,86 @@
+{
+  "version": 1,
+  "note": "Configuration des piscines. Les URL officielles sont saisies à la main (des sites commerciaux homonymes existent). Coordonnées : open data Toulouse Métropole (Licence Ouverte 2.0) ; L'Union : OpenStreetMap (centre de la rue, approximatif).",
+  "pools": [
+    {
+      "id": "alban-minville", "nom": "Alban Minville", "commune": "Toulouse",
+      "lat": 43.56399, "lon": 1.39921,
+      "bassin_nage": "Grand bassin",
+      "source": { "type": "toulouse_annuaire", "urls": ["https://metropole.toulouse.fr/annuaire/piscine-alban-minville"] }
+    },
+    {
+      "id": "alex-jany-toulouse", "nom": "Alex Jany", "commune": "Toulouse",
+      "lat": 43.62387, "lon": 1.47822,
+      "bassin_nage": "Grand bassin 25 m × 15 m",
+      "source": { "type": "toulouse_annuaire", "urls": ["https://metropole.toulouse.fr/annuaire/piscine-alex-jany"] }
+    },
+    {
+      "id": "bellevue", "nom": "Bellevue", "commune": "Toulouse",
+      "lat": 43.56805, "lon": 1.45376,
+      "bassin_nage": "Bassin intérieur 25 m et bassin nordique 25 m",
+      "source": { "type": "toulouse_annuaire", "urls": ["https://metropole.toulouse.fr/annuaire/piscine-bellevue"] }
+    },
+    {
+      "id": "castex", "nom": "Castex", "commune": "Toulouse",
+      "lat": 43.58610, "lon": 1.43436,
+      "bassin_nage": "Bassin de 50 m",
+      "source": { "type": "toulouse_annuaire", "urls": ["https://metropole.toulouse.fr/annuaire/piscine-castex"] }
+    },
+    {
+      "id": "chapou", "nom": "Chapou", "commune": "Toulouse",
+      "lat": 43.60918, "lon": 1.41805,
+      "bassin_nage": "Grand bassin 25 m",
+      "saison": "ete",
+      "source": { "type": "toulouse_annuaire", "urls": ["https://metropole.toulouse.fr/annuaire/piscine-chapou-ete"] }
+    },
+    {
+      "id": "jean-boiteux", "nom": "Jean Boiteux", "commune": "Toulouse",
+      "lat": 43.61635, "lon": 1.40771,
+      "bassin_nage": "Bassin sportif",
+      "source": { "type": "toulouse_annuaire", "urls": ["https://metropole.toulouse.fr/annuaire/piscine-jean-boiteux-espace-job"] }
+    },
+    {
+      "id": "leo-lagrange", "nom": "Léo Lagrange", "commune": "Toulouse",
+      "lat": 43.60738, "lon": 1.45474,
+      "bassin_nage": "Grand bassin 50 m",
+      "source": { "type": "toulouse_annuaire", "urls": ["https://metropole.toulouse.fr/annuaire/piscine-leo-lagrange"] }
+    },
+    {
+      "id": "nakache", "nom": "Alfred Nakache", "commune": "Toulouse",
+      "lat": 43.58538, "lon": 1.43472,
+      "bassin_nage": "Bassin intérieur 25 m (hiver) ; bassin extérieur (été)",
+      "source": { "type": "toulouse_annuaire", "urls": [
+        "https://metropole.toulouse.fr/annuaire/piscine-alfred-nakache-hiver",
+        "https://metropole.toulouse.fr/annuaire/piscine-alfred-nakache-ete"
+      ] }
+    },
+    {
+      "id": "papus", "nom": "Papus", "commune": "Toulouse",
+      "lat": 43.57462, "lon": 1.41792,
+      "bassin_nage": "Bassin sportif",
+      "source": { "type": "toulouse_annuaire", "urls": ["https://metropole.toulouse.fr/annuaire/piscine-papus"] }
+    },
+    {
+      "id": "toulouse-lautrec", "nom": "Toulouse Lautrec", "commune": "Toulouse",
+      "lat": 43.62719, "lon": 1.44028,
+      "bassin_nage": "Bassin nordique 50 m, 4 couloirs",
+      "warnings": [
+        { "text": "Travaux : bassin intérieur fermé, seul le bassin nordique (50 m) est ouvert.", "from": "2026-05-18" }
+      ],
+      "source": { "type": "toulouse_annuaire", "urls": ["https://metropole.toulouse.fr/annuaire/piscine-toulouse-lautrec"] }
+    },
+    {
+      "id": "yvonne-godard", "nom": "Yvonne Godard", "commune": "Toulouse",
+      "lat": 43.56522, "lon": 1.44528,
+      "bassin_nage": "Bassin sportif",
+      "source": { "type": "toulouse_annuaire", "urls": ["https://metropole.toulouse.fr/annuaire/piscine-yvonne-godard"] }
+    },
+    {
+      "id": "lunion", "nom": "Piscine municipale", "commune": "L'Union",
+      "lat": 43.65723, "lon": 1.49004,
+      "bassin_nage": "Bassin intérieur",
+      "source": { "type": "llm_page", "urls": ["https://www.ville-lunion.fr/sortir-bouger/piscine-municipale/"],
+        "hint": "Ne garder que les créneaux ouverts au public adulte (exclure cours collectifs, aquagym, enfants, parcours aquatique)." }
+    }
+  ]
+}

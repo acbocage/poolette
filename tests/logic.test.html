@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="fr"><head><meta charset="utf-8"><title>Tests Poolette</title>
+<style>body{font:14px/1.5 system-ui;margin:16px}.ok{color:#1e7a46}.ko{color:#c0392b;font-weight:700}</style></head>
+<body>
+<h1>Tests de la logique Poolette</h1>
+<p>Servir le dossier Poolette (<code>python -m http.server</code>) puis ouvrir cette page.</p>
+<ul id="out"></ul>
+<script type="module">
+import { evaluate, scheduleFor, parisNow, vacationKind, addDays, dowOf, haversineKm, fmtMin } from '../site/js/logic.js';
+
+const j = (u) => fetch(u).then((r) => r.json());
+const [{ pools }, { pools: hours }, { exceptions }, cal] = await Promise.all([
+  j('../site/pools.json'), j('../site/data/horaires.json'), j('../site/data/exceptions.json'), j('../site/data/calendar.json'),
+]);
+const P = Object.fromEntries(pools.map((p) => [p.id, p]));
+// « maintenant » fixe : mardi 10/11/2026 12h30 à Paris (UTC+1). Les données de test sont celles du pipeline.
+const NOW = new Date('2026-11-10T11:30:00Z');
+const fresh = Object.fromEntries(Object.entries(hours).map(([k, v]) => [k, { ...v, checked_at: '2026-11-10T05:00:00Z' }]));
+
+const ev = (id, q, now = NOW, h = fresh) => evaluate({ pool: P[id], h: h[id], exceptions, cal, q, now });
+const results = [];
+const t = (name, cond, info = '') => results.push({ name, ok: !!cond, info });
+
+t('Paris : 12h30 le 10/11', parisNow(NOW).min === 750 && parisNow(NOW).dateStr === '2026-11-10');
+t('10/11/2026 est un mardi, 11/11 un mercredi', dowOf('2026-11-10') === 2 && dowOf('2026-11-11') === 3);
+t('Vacances : 17/10 à 1/11 = Toussaint, 2/11 = scolaire', vacationKind('2026-10-17', cal) === 'toussaint' && vacationKind('2026-11-01', cal) === 'toussaint' && vacationKind('2026-11-02', cal) === null);
+
+let r = ev('alex-jany-toulouse', { mode: 'now', dateStr: '2026-11-10' });
+t('Alex Jany mardi 12h30 : ouvert (vert), jusqu\'à 14h', r.state === 'open' && r.headline.includes('14h'), r.headline);
+
+r = ev('alex-jany-toulouse', { mode: 'now', dateStr: '2026-11-10' }, new Date('2026-11-10T12:30:00Z'));
+t('Alex Jany mardi 13h30 : orange (30 min restantes)', r.state === 'soon' && r.remaining === 30, r.headline);
+
+r = ev('alex-jany-toulouse', { mode: 'now', dateStr: '2026-11-10' }, new Date('2026-11-10T13:30:00Z'));
+t('Alex Jany mardi 14h30 : fermé, rouvre à 16h', r.state === 'closed' && r.detail === 'Rouvre à 16h', r.detail);
+
+r = ev('alex-jany-toulouse', { mode: 'day', dateStr: '2026-11-10' }, new Date('2026-11-10T13:30:00Z'));
+t('Alex Jany « aujourd\'hui » 14h30 : ouvre plus tard à 16h', r.state === 'later' && r.headline === 'Ouvre à 16h', r.headline);
+
+r = ev('alex-jany-toulouse', { mode: 'day', dateStr: '2026-11-11' });
+t('Alex Jany 11/11 : fermé (Armistice)', r.state === 'closed' && /Armistice/.test(r.note || ''), r.note);
+
+r = ev('alex-jany-toulouse', { mode: 'day', dateStr: '2026-11-22' });
+t('Alex Jany 22/11 : fermé (manifestation sportive)', r.state === 'closed' && /Manifestation/.test(r.note || ''), r.note);
+
+r = ev('toulouse-lautrec', { mode: 'range', dateStr: '2026-11-11', from: 9 * 60, to: 10 * 60 });
+t('Lautrec 11/11 9h–10h : ouvert (8h30–15h)', r.state === 'open', r.headline);
+
+r = ev('toulouse-lautrec', { mode: 'range', dateStr: '2026-11-11', from: 14 * 60, to: 16 * 60 });
+t('Lautrec 11/11 14h–16h : partiel (orange)', r.state === 'soon' && r.detail === '14h–15h', r.detail);
+
+r = ev('toulouse-lautrec', { mode: 'range', dateStr: '2026-11-11', from: 16 * 60, to: 17 * 60 });
+t('Lautrec 11/11 16h–17h : fermé', r.state === 'closed', r.headline);
+
+r = ev('toulouse-lautrec', { mode: 'day', dateStr: '2026-12-24' });
+t('Lautrec 24/12 : période Noël (9h–16h)', r.state === 'open' && r.slots[0][0] === 540 && r.slots[0][1] === 960, JSON.stringify(r.slots));
+
+r = ev('alex-jany-toulouse', { mode: 'day', dateStr: '2026-12-24' });
+t('Alex Jany 24/12 : repli sur « vacances » (12h–19h)', r.state === 'open' && r.slots[0][0] === 720, JSON.stringify(r.slots));
+
+r = ev('toulouse-lautrec', { mode: 'now', dateStr: '2026-11-10' });
+t('Lautrec : avertissement bassin de nage affiché', r.warnings.length === 1 && /nordique/.test(r.warnings[0]), r.warnings[0]);
+
+r = ev('alex-jany-toulouse', { mode: 'now', dateStr: '2026-11-10' });
+t('Alex Jany : aucun avertissement (petit bassin ignoré)', r.warnings.length === 0);
+
+r = ev('castex', { mode: 'day', dateStr: '2026-11-11' });
+t('Castex 11/11 : non vérifié (jour férié non publié)', r.state === 'unknown' && /férié/.test(r.detail), r.detail);
+
+r = ev('chapou', { mode: 'now', dateStr: '2026-11-10' });
+t("Chapou en novembre : fermé (piscine d'été)", r.state === 'closed' && /été/.test(r.note || ''), r.note);
+
+r = ev('alex-jany-toulouse', { mode: 'day', dateStr: '2026-07-15' });
+t("Alex Jany en juillet : non vérifié (été non publié)", r.state === 'unknown', r.detail);
+
+r = ev('alex-jany-toulouse', { mode: 'now', dateStr: '2026-11-20' }, new Date('2026-11-20T11:30:00Z'));
+t('Données de plus de 48 h : non vérifié', r.state === 'unknown' && r.headline === 'Horaires non vérifiés', r.detail);
+
+r = ev('lunion', { mode: 'now', dateStr: '2026-11-10' }, NOW, hours);
+t("L'Union sans extraction : non vérifié", r.state === 'unknown', r.detail);
+
+r = ev('castex', { mode: 'day', dateStr: '2026-11-15' });
+t('Castex dimanche : ouvert 13h30–19h30', r.state === 'open' && r.slots[0][0] === 810, JSON.stringify(r.slots));
+
+r = ev('castex', { mode: 'day', dateStr: '2026-11-17' });
+t('Castex mardi : fermé', r.state === 'closed', r.headline);
+
+t('Distance Toulouse Capitole → Blagnac ≈ 7–9 km', (() => { const d = haversineKm(43.6045, 1.4442, 43.6370, 1.3900); return d > 4 && d < 9; })());
+t('addDays passe le mois', addDays('2026-11-30', 1) === '2026-12-01');
+t('fmtMin', fmtMin(810) === '13h30' && fmtMin(720) === '12h');
+
+const out = document.getElementById('out');
+for (const x of results) {
+  const li = document.createElement('li');
+  li.className = x.ok ? 'ok' : 'ko';
+  li.textContent = `${x.ok ? 'OK ' : 'ÉCHEC '} ${x.name}${x.ok ? '' : ' → ' + x.info}`;
+  out.append(li);
+}
+const bad = results.filter((x) => !x.ok).length;
+document.title = bad ? `ÉCHEC ${bad}/${results.length}` : `OK ${results.length}/${results.length}`;
+</script></body></html>
