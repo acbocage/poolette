@@ -99,7 +99,7 @@ def period_kinds(title):
     return []
 
 
-TIME = r"(\d{1,2})\s*h\s*(\d{2})?"
+TIME = r"(\d{1,2})[ \t]*h(\d{2})?"  # pas de \s après « h » : un saut de ligne ne doit pas devenir des minutes
 SLOT = re.compile(TIME + r"\s*[-–à]\s*" + TIME)
 
 
@@ -191,6 +191,47 @@ def parse_toulouse_page(html):
     return periods, en_bref
 
 
+# ----------------------------------------------- horaires : piscine de L'Union
+def parse_lunion_page(html):
+    """Les horaires de L'Union sont dans des onglets (« adultes et ados », « tout public », « cours »…).
+    On garde les onglets d'ouverture au public et on ignore cours, aquagym et parcours aquatique."""
+    from html import unescape
+    html = unescape(html)
+    starts = [m.start() for m in re.finditer(r'et_pb_tabs_controls', html)]
+    minutes = {"scolaire": {d: [] for d in DAYS}, "vacances": {d: [] for d in DAYS}}
+    for n, s in enumerate(starts):
+        block = html[s: starts[n + 1] if n + 1 < len(starts) else len(html)]
+        before = html_to_text(html[max(0, s - 4000): s]).lower()
+        scol, vac = before.rfind("période scolaire"), before.rfind("petites vacances")
+        if scol == -1 and vac == -1:
+            continue
+        key = "scolaire" if scol > vac else "vacances"
+        controls = block[: block.find("</ul>")]
+        titles = [html_to_text(t).lower() for t in re.findall(r'<li class="et_pb_tab_\d[^"]*"><a href="#">(.*?)</a></li>', controls, re.S)]
+        panes = re.split(r'<div class="et_pb_tab et_pb_tab_\d', block)[1:]
+        for title, pane in zip(titles, panes):
+            if not re.search(r"ouverture|public|ados|adolescents", title) or re.search(r"cours|aquagym|parcours", title):
+                continue
+            for tr in re.findall(r"(?s)<tr.*?</tr>", pane):
+                tds = re.findall(r"(?s)<td[^>]*>(.*?)</td>", tr)
+                if len(tds) < 2:
+                    continue
+                day = DAY_NAMES.get(strip_accents(html_to_text(tds[0])).lower().strip())
+                if day is None:
+                    continue
+                for a, b in parse_slots(html_to_text(tds[1])):
+                    minutes[key][DAYS[day]].append((int(a[:2]) * 60 + int(a[3:]), int(b[:2]) * 60 + int(b[3:])))
+    periods = {}
+    for key, ids, label in (("scolaire", ["scolaire"], "Période scolaire"),
+                            ("vacances", ["toussaint", "hiver", "printemps"], "Petites vacances (Toussaint, Février, Pâques)")):
+        sched = {d: [[f"{s // 60:02d}:{s % 60:02d}", f"{e // 60:02d}:{e % 60:02d}"] for s, e in merge_slots(minutes[key][d])]
+                 for d in DAYS}
+        if any(sched.values()):
+            for i in ids:
+                periods[i] = {"label": label, "schedule": sched}
+    return periods
+
+
 # ------------------------------------------------------------- API Claude
 def call_claude(system, prompt, max_tokens=4000):
     key = os.environ.get("ANTHROPIC_API_KEY")
@@ -258,8 +299,9 @@ Format : {{"exceptions":[{{"pool_id":"...","from":"AAAA-MM-JJ","to":"AAAA-MM-JJ"
 
 def extract_periods_llm(pool, html):
     """Pages libres (ex. L'Union) : l'IA lit la page et renvoie des périodes structurées."""
-    text = re.sub(r"(?is)<(script|style|svg|noscript).*?</\1>", " ", html)
-    text = re.sub(r"\s+", " ", text)[:60000]
+    # On envoie le texte de la page sans menus ni pieds de page : le HTML brut dépasse 400 Ko
+    # et sa troncature ne gardait que la navigation.
+    text = html_to_text(re.sub(r"(?is)<(nav|header|footer|svg|noscript)\b.*?</\1>", " ", html))[:30000]
     system = "Tu convertis la page d'horaires d'une piscine en JSON strict. Réponds uniquement par un objet JSON."
     prompt = f"""Piscine : {pool['nom']} ({pool['commune']}). Consigne : {pool['source'].get('hint', '')}
 Renvoie {{"periods": {{"scolaire": {{"label": "...", "schedule": {{"mon": [["12:00","13:30"]], "tue": [], ...}}}},
@@ -338,6 +380,12 @@ def main():
                         en_brefs.append(en_bref)
                 if not entry["periods"] and not pool.get("saison"):
                     raise ValueError("aucune période d'horaires reconnue (page modifiée ?)")
+            elif src["type"] == "lunion_tabs":
+                if "Error establishing a database connection" in htmls[0]:
+                    raise ValueError("site en erreur (base de données)")
+                entry["periods"] = parse_lunion_page(htmls[0])
+                if "scolaire" not in entry["periods"]:
+                    raise ValueError("aucun horaire scolaire reconnu (page modifiée ?)")
             elif src["type"] == "llm_page":
                 html = htmls[0]
                 h = sha(html_to_text(html))

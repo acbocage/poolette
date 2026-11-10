@@ -82,8 +82,17 @@ t("Alex Jany en juillet : non vérifié (été non publié)", r.state === 'unkno
 r = ev('alex-jany-toulouse', { mode: 'now', dateStr: '2026-11-20' }, new Date('2026-11-20T11:30:00Z'));
 t('Données de plus de 48 h : non vérifié', r.state === 'unknown' && r.headline === 'Horaires non vérifiés', r.detail);
 
-r = ev('lunion', { mode: 'now', dateStr: '2026-11-10' }, NOW, hours);
-t("L'Union sans extraction : non vérifié", r.state === 'unknown', r.detail);
+r = ev('lunion', { mode: 'now', dateStr: '2026-11-10' }, new Date('2026-11-10T17:30:00Z'));
+t("L'Union mardi 18h30 : ouvert jusqu'à 20h (créneau adultes)", r.state === 'open' && r.headline.includes('20h'), r.headline);
+
+r = ev('lunion', { mode: 'day', dateStr: '2026-11-11' });
+t("L'Union 11/11 : fermée toute la journée", r.state === 'closed', r.note);
+
+r = ev('lunion', { mode: 'day', dateStr: '2026-11-21' });
+t("L'Union samedi 21/11 : 9h–11h et 14h15–18h (public)", r.state === 'open' && r.slots.length === 2 && r.slots[1][0] === 855 && r.slots[1][1] === 1080, JSON.stringify(r.slots));
+
+r = ev('lunion', { mode: 'day', dateStr: '2026-12-29' });
+t("L'Union pendant Noël : non vérifié (fermeture annuelle non datée)", r.state === 'unknown', r.detail);
 
 r = ev('castex', { mode: 'day', dateStr: '2026-11-15' });
 t('Castex dimanche : ouvert 13h30–19h30', r.state === 'open' && r.slots[0][0] === 810, JSON.stringify(r.slots));

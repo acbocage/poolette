@@ -79,8 +79,7 @@
       "id": "lunion", "nom": "Piscine municipale", "commune": "L'Union",
       "lat": 43.65723, "lon": 1.49004,
       "bassin_nage": "Bassin intérieur",
-      "source": { "type": "llm_page", "urls": ["https://www.ville-lunion.fr/sortir-bouger/piscine-municipale/"],
-        "hint": "Ne garder que les créneaux ouverts au public adulte (exclure cours collectifs, aquagym, enfants, parcours aquatique)." }
+      "source": { "type": "lunion_tabs", "urls": ["https://www.ville-lunion.fr/sortir-bouger/piscine-municipale/"] }
     }
   ]
 }
