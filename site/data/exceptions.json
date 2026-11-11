@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-10",
+  "updated": "2026-11-11",
   "exceptions": [
     {
       "pool_id": "alex-jany-toulouse",
@@ -130,7 +130,7 @@
           "15:00"
         ]
       ],
-      "note": "Ouverture exceptionnelle (Armistice)",
+      "note": "Mercredi 11 novembre (Armistice)",
       "source": "llm"
     },
     {
@@ -144,7 +144,7 @@
           "15:00"
         ]
       ],
-      "note": "Ouverture exceptionnelle (Armistice)",
+      "note": "Mercredi 11 novembre (Armistice)",
       "source": "llm"
     },
     {
@@ -158,7 +158,7 @@
           "15:00"
         ]
       ],
-      "note": "Ouverture exceptionnelle (Armistice)",
+      "note": "Mercredi 11 novembre (Armistice)",
       "source": "llm"
     },
     {
@@ -172,7 +172,7 @@
           "18:30"
         ]
       ],
-      "note": "Ouverture exceptionnelle (Armistice)",
+      "note": "Mercredi 11 novembre (Armistice)",
       "source": "llm"
     },
     {
@@ -186,31 +186,7 @@
           "18:30"
         ]
       ],
-      "note": "Ouverture exceptionnelle (Armistice)",
-      "source": "llm"
-    },
-    {
-      "pool_id": "alex-jany-toulouse",
-      "from": "2026-11-11",
-      "to": "2026-11-11",
-      "type": "closed",
-      "note": "Fermée au public (Armistice)",
-      "source": "llm"
-    },
-    {
-      "pool_id": "alban-minville",
-      "from": "2026-11-11",
-      "to": "2026-11-11",
-      "type": "closed",
-      "note": "Fermée au public (Armistice)",
-      "source": "llm"
-    },
-    {
-      "pool_id": "nakache",
-      "from": "2026-11-11",
-      "to": "2026-11-11",
-      "type": "closed",
-      "note": "Fermée au public (Armistice)",
+      "note": "Mercredi 11 novembre (Armistice)",
       "source": "llm"
     },
     {
@@ -218,20 +194,44 @@
       "from": "2026-11-11",
       "to": "2026-11-11",
       "type": "closed",
-      "note": "Réservée aux jeux aquatiques 12h-18h, aucune ligne d'eau pour nager",
+      "note": "Bassin réservé à l'animation de jeux aquatiques de 12h à 18h, pas de nage",
       "source": "llm"
     },
     {
-      "pool_id": "leo-lagrange",
-      "from": "2026-11-14",
+      "pool_id": "nakache",
+      "from": "2026-11-11",
+      "to": "2026-11-11",
+      "type": "closed",
+      "note": "Mercredi 11 novembre (Armistice)",
+      "source": "llm"
+    },
+    {
+      "pool_id": "alex-jany-toulouse",
+      "from": "2026-11-11",
+      "to": "2026-11-11",
+      "type": "closed",
+      "note": "Mercredi 11 novembre (Armistice)",
+      "source": "llm"
+    },
+    {
+      "pool_id": "alban-minville",
+      "from": "2026-11-11",
+      "to": "2026-11-11",
+      "type": "closed",
+      "note": "Mercredi 11 novembre (Armistice)",
+      "source": "llm"
+    },
+    {
+      "pool_id": "nakache",
+      "from": "2026-11-15",
       "to": "2026-11-15",
       "type": "closed",
       "note": "Manifestation sportive",
       "source": "llm"
     },
     {
-      "pool_id": "nakache",
-      "from": "2026-11-15",
+      "pool_id": "leo-lagrange",
+      "from": "2026-11-14",
       "to": "2026-11-15",
       "type": "closed",
       "note": "Manifestation sportive",
@@ -250,7 +250,7 @@
       "from": "2026-11-25",
       "to": "2026-11-25",
       "type": "closed",
-      "note": "Bassin intérieur fermé 12h30-14h et 16h-17h (manifestation sportive)",
+      "note": "Bassin intérieur fermé de 12h30 à 14h et de 16h à 17h (manifestation sportive)",
       "source": "llm"
     },
     {
@@ -258,7 +258,7 @@
       "from": "2026-11-29",
       "to": "2026-11-29",
       "type": "closed",
-      "note": "Fermée toute la journée (manifestation sportive)",
+      "note": "Manifestation sportive, toute la journée",
       "source": "llm"
     },
     {
@@ -266,7 +266,7 @@
       "from": "2026-11-30",
       "to": "2026-11-30",
       "type": "closed",
-      "note": "Fermée de 7h à 9h seulement (manifestation sportive)",
+      "note": "Manifestation sportive, fermée de 7h à 9h uniquement",
       "source": "llm"
     }
   ]
