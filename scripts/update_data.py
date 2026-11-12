@@ -371,6 +371,15 @@ def main():
         pid, src = pool["id"], pool["source"]
         entry = {"periods": {}, "checked_at": None, "status": "missing", "source_urls": src["urls"]}
         try:
+            if src["type"] == "manual":
+                # Sites qui bloquent les robots : horaires saisis à la main dans pools.json (source.periods).
+                # À revérifier à la main de temps en temps (source.saisie = date de la dernière vérification).
+                entry["periods"] = src["periods"]
+                entry["manual"] = src.get("saisie")
+                entry["checked_at"] = now_utc().isoformat(timespec="seconds")
+                entry["status"] = "ok"
+                out[pid] = entry
+                continue
             htmls = [fetch(u) for u in src["urls"]]
             if src["type"] == "toulouse_annuaire":
                 for html in htmls:
