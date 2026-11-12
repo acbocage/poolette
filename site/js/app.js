@@ -120,7 +120,7 @@ function results() {
   const q = buildQuery();
   const rows = S.pools
     .map((pool) => ({ pool, km: S.dist[pool.id] ?? Infinity, r: evaluate({ pool, h: S.hours[pool.id], exceptions: S.exceptions, cal: S.cal, q, threshold: S.threshold }) }))
-    .filter((x) => x.km <= S.radius)
+    .filter((x) => x.km <= S.radius || S.favs.has(x.pool.id)) // un favori s'affiche toujours, même hors rayon
     .filter((x) => !S.onlyOpen || ['open', 'soon', 'later'].includes(x.r.state));
   rows.sort((a, b) => (S.favs.has(b.pool.id) - S.favs.has(a.pool.id)) || a.km - b.km);
   return { q, rows };
