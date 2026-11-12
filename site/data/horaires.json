@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-11T18:19:53+00:00",
+  "generated_at": "2026-11-12T07:58:17+00:00",
   "pools": {
     "alban-minville": {
       "periods": {
@@ -122,7 +122,7 @@
           }
         }
       },
-      "checked_at": "2026-11-11T18:19:43+00:00",
+      "checked_at": "2026-11-12T07:57:29+00:00",
       "status": "ok",
       "source_urls": [
         "https://metropole.toulouse.fr/annuaire/piscine-alban-minville"
@@ -249,7 +249,7 @@
           }
         }
       },
-      "checked_at": "2026-11-11T18:19:44+00:00",
+      "checked_at": "2026-11-12T07:57:30+00:00",
       "status": "ok",
       "source_urls": [
         "https://metropole.toulouse.fr/annuaire/piscine-alex-jany"
@@ -364,7 +364,7 @@
           }
         }
       },
-      "checked_at": "2026-11-11T18:19:45+00:00",
+      "checked_at": "2026-11-12T07:57:31+00:00",
       "status": "ok",
       "source_urls": [
         "https://metropole.toulouse.fr/annuaire/piscine-bellevue"
@@ -390,7 +390,7 @@
           }
         }
       },
-      "checked_at": "2026-11-11T18:19:45+00:00",
+      "checked_at": "2026-11-12T07:57:32+00:00",
       "status": "ok",
       "source_urls": [
         "https://metropole.toulouse.fr/annuaire/piscine-castex"
@@ -398,7 +398,7 @@
     },
     "chapou": {
       "periods": {},
-      "checked_at": "2026-11-11T18:19:46+00:00",
+      "checked_at": "2026-11-12T07:57:33+00:00",
       "status": "ok",
       "source_urls": [
         "https://metropole.toulouse.fr/annuaire/piscine-chapou-ete"
@@ -666,7 +666,7 @@
           }
         }
       },
-      "checked_at": "2026-11-11T18:19:47+00:00",
+      "checked_at": "2026-11-12T07:57:33+00:00",
       "status": "ok",
       "source_urls": [
         "https://metropole.toulouse.fr/annuaire/piscine-jean-boiteux-espace-job"
@@ -805,7 +805,7 @@
           }
         }
       },
-      "checked_at": "2026-11-11T18:19:47+00:00",
+      "checked_at": "2026-11-12T07:57:34+00:00",
       "status": "ok",
       "source_urls": [
         "https://metropole.toulouse.fr/annuaire/piscine-leo-lagrange"
@@ -920,7 +920,7 @@
           }
         }
       },
-      "checked_at": "2026-11-11T18:19:49+00:00",
+      "checked_at": "2026-11-12T07:57:36+00:00",
       "status": "ok",
       "source_urls": [
         "https://metropole.toulouse.fr/annuaire/piscine-alfred-nakache-hiver",
@@ -1052,7 +1052,7 @@
           }
         }
       },
-      "checked_at": "2026-11-11T18:19:50+00:00",
+      "checked_at": "2026-11-12T07:57:37+00:00",
       "status": "ok",
       "source_urls": [
         "https://metropole.toulouse.fr/annuaire/piscine-papus"
@@ -1269,7 +1269,7 @@
           }
         }
       },
-      "checked_at": "2026-11-11T18:19:50+00:00",
+      "checked_at": "2026-11-12T07:57:38+00:00",
       "status": "ok",
       "source_urls": [
         "https://metropole.toulouse.fr/annuaire/piscine-toulouse-lautrec"
@@ -1392,7 +1392,7 @@
           }
         }
       },
-      "checked_at": "2026-11-11T18:19:51+00:00",
+      "checked_at": "2026-11-12T07:57:39+00:00",
       "status": "ok",
       "source_urls": [
         "https://metropole.toulouse.fr/annuaire/piscine-yvonne-godard"
@@ -1681,10 +1681,491 @@
           }
         }
       },
-      "checked_at": "2026-11-11T18:19:53+00:00",
+      "checked_at": "2026-11-12T07:57:41+00:00",
       "status": "ok",
       "source_urls": [
         "https://www.ville-lunion.fr/sortir-bouger/piscine-municipale/"
+      ]
+    },
+    "blagnac-ramiers": {
+      "periods": {
+        "scolaire": {
+          "label": "Bassin nordique, du 7 septembre 2026 au 6 juin 2027",
+          "schedule": {
+            "mon": [
+              [
+                "09:00",
+                "18:45"
+              ]
+            ],
+            "tue": [
+              [
+                "11:30",
+                "20:15"
+              ]
+            ],
+            "wed": [
+              [
+                "11:30",
+                "20:15"
+              ]
+            ],
+            "thu": [
+              [
+                "09:00",
+                "18:45"
+              ]
+            ],
+            "fri": [
+              [
+                "11:30",
+                "20:15"
+              ]
+            ],
+            "sat": [
+              [
+                "09:00",
+                "17:45"
+              ]
+            ],
+            "sun": [
+              [
+                "09:00",
+                "16:45"
+              ]
+            ]
+          }
+        }
+      },
+      "checked_at": "2026-11-12T07:57:48+00:00",
+      "status": "ok",
+      "source_urls": [
+        "https://www.mairie-blagnac.fr/piscine-des-ramiers-et-activites"
+      ]
+    },
+    "colomiers-vauchere": {
+      "periods": {
+        "scolaire": {
+          "label": "Période scolaire (septembre à juin)",
+          "schedule": {
+            "mon": [
+              [
+                "10:00",
+                "20:00"
+              ]
+            ],
+            "tue": [
+              [
+                "10:00",
+                "21:30"
+              ]
+            ],
+            "wed": [
+              [
+                "10:00",
+                "20:00"
+              ]
+            ],
+            "thu": [
+              [
+                "10:00",
+                "21:30"
+              ]
+            ],
+            "fri": [
+              [
+                "10:00",
+                "20:00"
+              ]
+            ],
+            "sat": [
+              [
+                "12:00",
+                "19:00"
+              ]
+            ],
+            "sun": [
+              [
+                "09:00",
+                "19:00"
+              ]
+            ]
+          }
+        },
+        "vacances": {
+          "label": "Petites vacances scolaires (Hiver, Printemps, Automne, Noël)",
+          "schedule": {
+            "mon": [
+              [
+                "10:00",
+                "20:00"
+              ]
+            ],
+            "tue": [
+              [
+                "10:00",
+                "21:30"
+              ]
+            ],
+            "wed": [
+              [
+                "10:00",
+                "20:00"
+              ]
+            ],
+            "thu": [
+              [
+                "10:00",
+                "21:30"
+              ]
+            ],
+            "fri": [
+              [
+                "10:00",
+                "20:00"
+              ]
+            ],
+            "sat": [
+              [
+                "09:00",
+                "19:00"
+              ]
+            ],
+            "sun": [
+              [
+                "09:00",
+                "19:00"
+              ]
+            ]
+          }
+        },
+        "ete": {
+          "label": "Période estivale (du 15/06/2026 au 30/08/2026 inclus)",
+          "schedule": {
+            "mon": [
+              [
+                "10:00",
+                "20:00"
+              ]
+            ],
+            "tue": [
+              [
+                "10:00",
+                "21:30"
+              ]
+            ],
+            "wed": [
+              [
+                "10:00",
+                "20:00"
+              ]
+            ],
+            "thu": [
+              [
+                "10:00",
+                "21:30"
+              ]
+            ],
+            "fri": [
+              [
+                "10:00",
+                "20:00"
+              ]
+            ],
+            "sat": [
+              [
+                "09:00",
+                "20:00"
+              ]
+            ],
+            "sun": [
+              [
+                "09:00",
+                "20:00"
+              ]
+            ]
+          }
+        }
+      },
+      "checked_at": "2026-11-12T07:57:56+00:00",
+      "status": "ok",
+      "source_urls": [
+        "https://www.espacenautique-colomiers.com/infos-pratiques/horaires"
+      ]
+    },
+    "castanet-vallerey": {
+      "periods": {},
+      "checked_at": null,
+      "status": "missing",
+      "source_urls": [
+        "https://www.castanet-tolosan.fr/creatrice/sports-et-loisirs/piscine-municipale-347.html"
+      ]
+    },
+    "ramonville-alex-jany": {
+      "periods": {},
+      "checked_at": null,
+      "status": "missing",
+      "source_urls": [
+        "https://www.ramonville.fr/active/sport/piscine-alex-jany/"
+      ]
+    },
+    "tournefeuille-oasis": {
+      "periods": {
+        "scolaire": {
+          "label": "Période scolaire",
+          "schedule": {
+            "mon": [
+              [
+                "12:00",
+                "14:15"
+              ],
+              [
+                "16:30",
+                "19:00"
+              ]
+            ],
+            "tue": [
+              [
+                "12:00",
+                "14:15"
+              ],
+              [
+                "16:30",
+                "19:00"
+              ]
+            ],
+            "wed": [
+              [
+                "08:30",
+                "13:45"
+              ]
+            ],
+            "thu": [
+              [
+                "12:00",
+                "14:15"
+              ],
+              [
+                "16:30",
+                "19:00"
+              ]
+            ],
+            "fri": [
+              [
+                "12:00",
+                "14:15"
+              ],
+              [
+                "16:30",
+                "19:00"
+              ]
+            ],
+            "sat": [],
+            "sun": [
+              [
+                "08:30",
+                "14:15"
+              ]
+            ]
+          }
+        },
+        "vacances": {
+          "label": "Vacances scolaires (hors juillet et août)",
+          "schedule": {
+            "mon": [
+              [
+                "08:30",
+                "14:15"
+              ]
+            ],
+            "tue": [
+              [
+                "08:30",
+                "14:15"
+              ]
+            ],
+            "wed": [
+              [
+                "08:30",
+                "14:15"
+              ]
+            ],
+            "thu": [
+              [
+                "08:30",
+                "14:15"
+              ]
+            ],
+            "fri": [
+              [
+                "08:30",
+                "14:15"
+              ]
+            ],
+            "sat": [],
+            "sun": [
+              [
+                "08:30",
+                "14:15"
+              ]
+            ]
+          }
+        },
+        "ete": {
+          "label": "Horaires d'été (juillet ; août : fermeture annuelle)",
+          "schedule": {
+            "mon": [
+              [
+                "12:00",
+                "19:00"
+              ]
+            ],
+            "tue": [
+              [
+                "12:00",
+                "19:00"
+              ]
+            ],
+            "wed": [
+              [
+                "12:00",
+                "19:00"
+              ]
+            ],
+            "thu": [
+              [
+                "12:00",
+                "19:00"
+              ]
+            ],
+            "fri": [
+              [
+                "12:00",
+                "19:00"
+              ]
+            ],
+            "sat": [
+              [
+                "13:00",
+                "19:00"
+              ]
+            ],
+            "sun": [
+              [
+                "13:00",
+                "19:00"
+              ]
+            ]
+          }
+        }
+      },
+      "checked_at": "2026-11-12T07:58:03+00:00",
+      "status": "ok",
+      "source_urls": [
+        "https://www.loasisdelaramee.fr/infos-pratiques/horaires-d-ouverture-au-public.html"
+      ]
+    },
+    "montauban-ingreo": {
+      "periods": {
+        "scolaire": {
+          "label": "Bassin nordique (LUN à DIM)",
+          "schedule": {
+            "mon": [
+              [
+                "09:00",
+                "20:00"
+              ]
+            ],
+            "tue": [
+              [
+                "07:00",
+                "20:00"
+              ]
+            ],
+            "wed": [
+              [
+                "07:00",
+                "20:00"
+              ]
+            ],
+            "thu": [
+              [
+                "07:00",
+                "20:00"
+              ]
+            ],
+            "fri": [
+              [
+                "09:00",
+                "20:00"
+              ]
+            ],
+            "sat": [
+              [
+                "09:00",
+                "19:00"
+              ]
+            ],
+            "sun": [
+              [
+                "09:00",
+                "19:00"
+              ]
+            ]
+          }
+        },
+        "vacances": {
+          "label": "Bassin nordique (LUN à DIM)",
+          "schedule": {
+            "mon": [
+              [
+                "09:00",
+                "20:00"
+              ]
+            ],
+            "tue": [
+              [
+                "07:00",
+                "20:00"
+              ]
+            ],
+            "wed": [
+              [
+                "07:00",
+                "20:00"
+              ]
+            ],
+            "thu": [
+              [
+                "07:00",
+                "20:00"
+              ]
+            ],
+            "fri": [
+              [
+                "09:00",
+                "20:00"
+              ]
+            ],
+            "sat": [
+              [
+                "09:00",
+                "19:00"
+              ]
+            ],
+            "sun": [
+              [
+                "09:00",
+                "19:00"
+              ]
+            ]
+          }
+        }
+      },
+      "checked_at": "2026-11-12T07:58:08+00:00",
+      "status": "ok",
+      "source_urls": [
+        "https://ingreo.fr/horaires.html"
       ]
     }
   }
