@@ -80,6 +80,48 @@
       "lat": 43.65723, "lon": 1.49004,
       "bassin_nage": "Bassin intérieur",
       "source": { "type": "lunion_tabs", "urls": ["https://www.ville-lunion.fr/sortir-bouger/piscine-municipale/"] }
+    },
+    {
+      "id": "blagnac-ramiers", "nom": "Les Ramiers", "commune": "Blagnac",
+      "lat": 43.6370, "lon": 1.4000, "approx": true,
+      "bassin_nage": "Bassin nordique",
+      "source": { "type": "llm_page", "urls": ["https://www.mairie-blagnac.fr/piscine-des-ramiers-et-activites"],
+        "hint": "Utilise uniquement la ligne « Bassin nordique » du tableau « HORAIRES DES BASSINS » (jours dans l'ordre lundi à dimanche). Clé « scolaire » : horaires du 7 septembre au 6 juin. Pas de période vacances distincte pour le bassin nordique : mets les mêmes horaires dans « vacances ». Ignore le bassin intérieur et les activités." }
+    },
+    {
+      "id": "colomiers-vauchere", "nom": "Jean Vauchère", "commune": "Colomiers",
+      "lat": 43.60868, "lon": 1.33336,
+      "bassin_nage": "Bassin sportif",
+      "source": { "type": "llm_page", "urls": ["https://www.espacenautique-colomiers.com/infos-pratiques/horaires"],
+        "hint": "Tableau « Horaires d'ouverture » : colonnes Lundi, Mardi, Mercredi, Jeudi, Vendredi, Samedi, Dimanche et jours fériés. Lignes : « Période scolaire » -> clé scolaire ; « Petites vacances scolaires » -> clé vacances ; « Période estivale » -> clé ete. Critère = ouvert au public : quand une case indique 7h*** (réservé aux nageurs de 7h à 10h), le public est admis à partir de 10h, donc utilise 10h comme ouverture." }
+    },
+    {
+      "id": "castanet-vallerey", "nom": "Georges Vallerey", "commune": "Castanet-Tolosan",
+      "lat": 43.52212, "lon": 1.49164,
+      "bassin_nage": "Bassin intérieur",
+      "source": { "type": "llm_page", "urls": ["https://www.castanet-tolosan.fr/creatrice/sports-et-loisirs/piscine-municipale-347.html"],
+        "hint": "Section « Horaires » : « Période scolaire » -> clé scolaire ; « Petites vacances scolaires » -> clé vacances ; « Vacances d'été » (fermeture le jeudi) -> clé ete. Ignore les actualités et les tarifs." }
+    },
+    {
+      "id": "ramonville-alex-jany", "nom": "Alex Jany", "commune": "Ramonville-Saint-Agne",
+      "lat": 43.54689, "lon": 1.48075,
+      "bassin_nage": "Bassin sportif",
+      "source": { "type": "llm_page", "urls": ["https://www.ramonville.fr/active/sport/piscine-alex-jany/"],
+        "hint": "Section « Horaires période scolaire » -> clé scolaire uniquement (les vacances ne sont pas publiées sur cette page : ne crée pas de clé vacances). Ignore les créneaux « Jeudis aux seniors » (inclus dans les horaires publics) et les annonces de fermeture exceptionnelle." }
+    },
+    {
+      "id": "tournefeuille-oasis", "nom": "Oasis de la Ramée", "commune": "Tournefeuille",
+      "lat": 43.5605, "lon": 1.3578,
+      "bassin_nage": "Grand bassin",
+      "source": { "type": "llm_page", "urls": ["https://www.loasisdelaramee.fr/infos-pratiques/horaires-d-ouverture-au-public.html"],
+        "hint": "Utilise « Horaires d'ouverture au public » (pas « Disponibilités du Petit bassin »). « Période scolaire » -> clé scolaire ; « Vacances scolaires (hors juillet et août) » -> clé vacances ; « Horaires d'été » (juillet ; août = fermeture annuelle) -> clé ete avec les horaires de juillet. Samedi « Réservé aux Associations » = aucun créneau public (liste vide)." }
+    },
+    {
+      "id": "montauban-ingreo", "nom": "Ingréo", "commune": "Montauban",
+      "lat": 44.01401, "lon": 1.3663,
+      "bassin_nage": "Bassin nordique 50 m",
+      "source": { "type": "llm_page", "urls": ["https://ingreo.fr/horaires.html"],
+        "hint": "Utilise uniquement la ligne « Bassin nordique » (LUN à DIM) pour la clé scolaire, et recopie-la dans la clé vacances. Ignore le bassin sportif, le bassin ludique, le Pentagliss, le fitness et le bien-être." }
     }
   ]
 }
