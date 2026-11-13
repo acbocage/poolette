@@ -1,5 +1,5 @@
 // Service worker Poolette : l'appli s'ouvre hors ligne avec les dernières données connues.
-const VERSION = 'poolette-v2';
+const VERSION = 'poolette-v3';
 const SHELL = ['./', 'index.html', 'styles.css', 'js/app.js', 'js/logic.js', 'js/config.js',
   'manifest.webmanifest', 'icons/icon.svg', 'pools.json'];
 

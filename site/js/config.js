@@ -5,5 +5,5 @@
 export const CONFIG = {
   orsKey: '',
   defaultCenter: { lat: 43.6045, lon: 1.4442, label: 'Toulouse centre' },
-  maxRadiusKm: 20,
+  maxRadiusKm: 60,
 };
