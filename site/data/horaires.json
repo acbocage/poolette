@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-18T19:14:18+00:00",
+  "generated_at": "2026-11-19T14:09:06+00:00",
   "pools": {
     "alban-minville": {
       "periods": {
@@ -1681,8 +1681,8 @@
           }
         }
       },
-      "checked_at": "2026-11-17T19:34:24+00:00",
-      "status": "stale",
+      "checked_at": "2026-11-19T14:08:58+00:00",
+      "status": "ok",
       "source_urls": [
         "https://www.ville-lunion.fr/sortir-bouger/piscine-municipale/"
       ]
@@ -1784,7 +1784,7 @@
           }
         }
       },
-      "checked_at": "2026-11-18T19:14:14+00:00",
+      "checked_at": "2026-11-19T14:08:59+00:00",
       "status": "ok",
       "source_urls": [
         "https://www.mairie-blagnac.fr/piscine-des-ramiers-et-activites"
@@ -1934,7 +1934,7 @@
           }
         }
       },
-      "checked_at": "2026-11-18T19:14:16+00:00",
+      "checked_at": "2026-11-19T14:09:01+00:00",
       "status": "ok",
       "source_urls": [
         "https://www.espacenautique-colomiers.com/infos-pratiques/horaires"
@@ -2248,7 +2248,7 @@
           }
         }
       },
-      "checked_at": "2026-11-18T19:14:16+00:00",
+      "checked_at": "2026-11-19T14:09:01+00:00",
       "status": "ok",
       "source_urls": [
         "https://www.castanet-tolosan.fr/creatrice/sports-et-loisirs/piscine-municipale-347.html"
@@ -2313,7 +2313,7 @@
           }
         }
       },
-      "checked_at": "2026-11-18T19:14:16+00:00",
+      "checked_at": "2026-11-19T14:09:01+00:00",
       "status": "ok",
       "source_urls": [
         "https://www.ramonville.fr/active/sport/piscine-alex-jany/"
@@ -2470,7 +2470,7 @@
           }
         }
       },
-      "checked_at": "2026-11-18T19:14:17+00:00",
+      "checked_at": "2026-11-19T14:09:01+00:00",
       "status": "ok",
       "source_urls": [
         "https://www.loasisdelaramee.fr/infos-pratiques/horaires-d-ouverture-au-public.html"
@@ -2479,7 +2479,7 @@
     "montauban-ingreo": {
       "periods": {
         "scolaire": {
-          "label": "Bassin nordique (LUN à DIM)",
+          "label": "Bassin nordique - Ingréo (Montauban)",
           "schedule": {
             "mon": [
               [
@@ -2526,7 +2526,7 @@
           }
         },
         "vacances": {
-          "label": "Bassin nordique (LUN à DIM)",
+          "label": "Bassin nordique - Ingréo (Montauban)",
           "schedule": {
             "mon": [
               [
@@ -2573,7 +2573,7 @@
           }
         }
       },
-      "checked_at": "2026-11-18T19:14:18+00:00",
+      "checked_at": "2026-11-19T14:09:06+00:00",
       "status": "ok",
       "source_urls": [
         "https://ingreo.fr/horaires.html"
