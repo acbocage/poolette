@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-22T13:06:15+00:00",
+  "generated_at": "2026-11-22T18:12:14+00:00",
   "pools": {
     "alban-minville": {
       "periods": {
@@ -1681,7 +1681,7 @@
           }
         }
       },
-      "checked_at": "2026-11-22T13:06:05+00:00",
+      "checked_at": "2026-11-22T18:12:09+00:00",
       "status": "ok",
       "source_urls": [
         "https://www.ville-lunion.fr/sortir-bouger/piscine-municipale/"
@@ -1784,7 +1784,7 @@
           }
         }
       },
-      "checked_at": "2026-11-22T13:06:07+00:00",
+      "checked_at": "2026-11-22T18:12:10+00:00",
       "status": "ok",
       "source_urls": [
         "https://www.mairie-blagnac.fr/piscine-des-ramiers-et-activites"
@@ -1934,7 +1934,7 @@
           }
         }
       },
-      "checked_at": "2026-11-22T13:06:08+00:00",
+      "checked_at": "2026-11-22T18:12:12+00:00",
       "status": "ok",
       "source_urls": [
         "https://www.espacenautique-colomiers.com/infos-pratiques/horaires"
@@ -2248,7 +2248,7 @@
           }
         }
       },
-      "checked_at": "2026-11-22T13:06:08+00:00",
+      "checked_at": "2026-11-22T18:12:12+00:00",
       "status": "ok",
       "source_urls": [
         "https://www.castanet-tolosan.fr/creatrice/sports-et-loisirs/piscine-municipale-347.html"
@@ -2313,7 +2313,7 @@
           }
         }
       },
-      "checked_at": "2026-11-22T13:06:08+00:00",
+      "checked_at": "2026-11-22T18:12:12+00:00",
       "status": "ok",
       "source_urls": [
         "https://www.ramonville.fr/active/sport/piscine-alex-jany/"
@@ -2470,7 +2470,7 @@
           }
         }
       },
-      "checked_at": "2026-11-22T13:06:09+00:00",
+      "checked_at": "2026-11-22T18:12:13+00:00",
       "status": "ok",
       "source_urls": [
         "https://www.loasisdelaramee.fr/infos-pratiques/horaires-d-ouverture-au-public.html"
@@ -2573,7 +2573,7 @@
           }
         }
       },
-      "checked_at": "2026-11-22T13:06:15+00:00",
+      "checked_at": "2026-11-22T18:12:14+00:00",
       "status": "ok",
       "source_urls": [
         "https://ingreo.fr/horaires.html"
