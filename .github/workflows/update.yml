@@ -2,7 +2,7 @@ name: Poolette - mise à jour des horaires et déploiement
 
 on:
   schedule:
-    - cron: "0 5 * * *"    # chaque jour, ~6h (hiver) / 7h (été) à Paris
+    - cron: "0 3 * * *"    # chaque jour, ~4h (hiver) / 5h (été) à Paris
     - cron: "0 11 * * *"   # puis ~12h / 13h pour les annonces de dernière minute
   workflow_dispatch:        # lancement manuel depuis l'onglet Actions
   push:
