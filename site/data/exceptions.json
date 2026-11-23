@@ -1,22 +1,6 @@
 {
-  "updated": "2026-11-22",
+  "updated": "2026-11-23",
   "exceptions": [
-    {
-      "pool_id": "alex-jany-toulouse",
-      "from": "2026-11-21",
-      "to": "2026-11-22",
-      "type": "closed",
-      "note": "Manifestation sportive",
-      "source": "manual"
-    },
-    {
-      "pool_id": "alex-jany-toulouse",
-      "from": "2026-11-21",
-      "to": "2026-11-22",
-      "type": "closed",
-      "note": "manifestation sportive",
-      "source": "llm"
-    },
     {
       "pool_id": "bellevue",
       "from": "2026-11-25",
