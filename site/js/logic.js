@@ -3,6 +3,9 @@
 
 export const KEYS = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat'];
 export const STALE_HOURS = 48;
+// Au-delà de STALE_HOURS on affiche encore les derniers horaires connus, avec un avertissement ;
+// au-delà de STALE_MAX_DAYS ils sont jugés trop anciens et la piscine repasse en gris.
+export const STALE_MAX_DAYS = 14;
 
 // Enchaînement des périodes quand une piscine n'a pas de tableau dédié à une vacance.
 const CHAIN = {
@@ -74,6 +77,12 @@ export function isStale(h, now = new Date()) {
   return now - new Date(h.checked_at) > STALE_HOURS * 3600 * 1000;
 }
 
+/** Horaires trop anciens (ou sans aucune période exploitable) pour être affichés, même avec avertissement. */
+export function isTooOld(h, now = new Date()) {
+  if (!h?.checked_at || !Object.keys(h.periods || {}).length) return true;
+  return now - new Date(h.checked_at) > STALE_MAX_DAYS * 86400 * 1000;
+}
+
 /**
  * Statut d'une piscine pour une requête.
  * q = { mode: 'now' | 'day' | 'range', dateStr, from?, to? }  (from/to en minutes)
@@ -84,13 +93,19 @@ export function evaluate({ pool, h, exceptions, cal, q, now = new Date(), thresh
   const warnings = (pool.warnings || [])
     .filter((w) => (!w.from || w.from <= q.dateStr) && (!w.until || q.dateStr <= w.until))
     .map((w) => w.text);
-  const out = (state, headline, extra = {}) => ({ state, headline, warnings, slots: [], ...extra });
+  let stale = false;
+  const out = (state, headline, extra = {}) => ({ state, headline, warnings, slots: [], unverified: stale, ...extra });
 
   if (!h) return out('unknown', 'Horaires indisponibles', { detail: 'Source non lue pour le moment' });
-  if (isStale(h, now)) {
+  stale = isStale(h, now);
+  if (stale && isTooOld(h, now)) {
     return out('unknown', 'Horaires non vérifiés', {
       detail: h.checked_at ? `Dernière vérification : ${new Date(h.checked_at).toLocaleDateString('fr-FR')}` : 'Jamais vérifiés',
     });
+  }
+  if (stale) { // dernières données connues, avec avertissement visible sur la carte
+    const since = new Intl.DateTimeFormat('fr-FR', { timeZone: 'Europe/Paris', day: 'numeric', month: 'long' }).format(new Date(h.checked_at));
+    warnings.push(`Horaires non revérifiés depuis le ${since} : à confirmer auprès de la piscine.`);
   }
   const sch = scheduleFor(pool, h, exceptions, q.dateStr, cal);
   if (!sch.known) return out('unknown', 'Horaires non vérifiés', { detail: sch.reason });
