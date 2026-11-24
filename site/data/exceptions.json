@@ -6,7 +6,7 @@
       "from": "2026-11-25",
       "to": "2026-11-25",
       "type": "closed",
-      "note": "Bassin intérieur fermé 12h30-14h et 16h-17h (manifestation sportive)",
+      "note": "bassin intérieur fermé 12h30-14h et 16h-17h (manifestation sportive)",
       "source": "llm"
     },
     {
@@ -14,7 +14,7 @@
       "from": "2026-09-17",
       "to": "2027-06-21",
       "type": "closed",
-      "note": "Petit bassin nordique fermé pour la saison hivernale; réouverture à l'été 2027 (date approximative)",
+      "note": "petit bassin nordique fermé pour la saison hivernale, réouverture à l'arrivée de l'été 2027 (date exacte non précisée)",
       "source": "llm"
     },
     {
@@ -22,7 +22,7 @@
       "from": "2026-11-29",
       "to": "2026-11-29",
       "type": "closed",
-      "note": "Fermeture toute la journée (manifestation sportive)",
+      "note": "fermeture toute la journée (manifestation sportive)",
       "source": "llm"
     },
     {
@@ -30,7 +30,7 @@
       "from": "2026-11-30",
       "to": "2026-11-30",
       "type": "closed",
-      "note": "Fermée de 7h à 9h (manifestation sportive)",
+      "note": "fermée 7h-9h (manifestation sportive)",
       "source": "llm"
     }
   ]
