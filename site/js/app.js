@@ -178,8 +178,13 @@ function render() {
   if (S.generatedAt) {
     const d = new Date(S.generatedAt);
     const when = new Intl.DateTimeFormat('fr-FR', { timeZone: 'Europe/Paris', day: 'numeric', month: 'long', hour: '2-digit', minute: '2-digit' }).format(d);
-    const stale = S.pools.filter((p) => evaluate({ pool: p, h: S.hours[p.id], exceptions: S.exceptions, cal: S.cal, q: { mode: 'now', dateStr: today } }).state === 'unknown').length;
-    $('#fresh').textContent = `Horaires vérifiés le ${when}.${stale ? ` ${stale} piscine${stale > 1 ? 's' : ''} non vérifiée${stale > 1 ? 's' : ''} pour ce moment.` : ''}`;
+    const all = S.pools.map((p) => evaluate({ pool: p, h: S.hours[p.id], exceptions: S.exceptions, cal: S.cal, q: { mode: 'now', dateStr: today } }));
+    const stale = all.filter((r) => r.state === 'unknown').length;
+    const old = all.filter((r) => r.unverified).length;
+    const plural = (n) => (n > 1 ? 's' : '');
+    $('#fresh').textContent = `Horaires vérifiés le ${when}.`
+      + (old ? ` ${old} piscine${plural(old)} avec des horaires non revérifiés récemment.` : '')
+      + (stale ? ` ${stale} piscine${plural(stale)} non vérifiée${plural(stale)} pour ce moment.` : '');
   }
   if (S.view === 'map') renderMap(rows);
 }

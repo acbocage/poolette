@@ -80,7 +80,10 @@ r = ev('alex-jany-toulouse', { mode: 'day', dateStr: '2026-07-15' });
 t("Alex Jany en juillet : non vérifié (été non publié)", r.state === 'unknown', r.detail);
 
 r = ev('alex-jany-toulouse', { mode: 'now', dateStr: '2026-11-20' }, new Date('2026-11-20T11:30:00Z'));
-t('Données de plus de 48 h : non vérifié', r.state === 'unknown' && r.headline === 'Horaires non vérifiés', r.detail);
+t('Données de 48 h à 14 jours : horaires affichés avec avertissement', r.state !== 'unknown' && r.unverified && r.warnings.some((w) => /non revérifiés/.test(w)), r.headline + ' / ' + r.warnings.join(' | '));
+
+r = ev('alex-jany-toulouse', { mode: 'now', dateStr: '2026-11-30' }, new Date('2026-11-30T11:30:00Z'));
+t('Données de plus de 14 jours : non vérifié (gris)', r.state === 'unknown' && r.headline === 'Horaires non vérifiés', r.detail);
 
 r = ev('lunion', { mode: 'now', dateStr: '2026-11-10' }, new Date('2026-11-10T17:30:00Z'));
 t("L'Union mardi 18h30 : ouvert jusqu'à 20h (créneau adultes)", r.state === 'open' && r.headline.includes('20h'), r.headline);
