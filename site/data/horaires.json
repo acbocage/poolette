@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-24T20:58:56+00:00",
+  "generated_at": "2026-11-25T12:32:37+00:00",
   "pools": {
     "alban-minville": {
       "periods": {
@@ -122,7 +122,7 @@
           }
         }
       },
-      "checked_at": "2026-11-24T20:58:31+00:00",
+      "checked_at": "2026-11-25T12:32:13+00:00",
       "status": "ok",
       "source_urls": [
         "https://metropole.toulouse.fr/annuaire/piscine-alban-minville"
@@ -249,7 +249,7 @@
           }
         }
       },
-      "checked_at": "2026-11-24T20:58:32+00:00",
+      "checked_at": "2026-11-25T12:32:14+00:00",
       "status": "ok",
       "source_urls": [
         "https://metropole.toulouse.fr/annuaire/piscine-alex-jany"
@@ -364,7 +364,7 @@
           }
         }
       },
-      "checked_at": "2026-11-24T20:58:33+00:00",
+      "checked_at": "2026-11-25T12:32:15+00:00",
       "status": "ok",
       "source_urls": [
         "https://metropole.toulouse.fr/annuaire/piscine-bellevue"
@@ -390,7 +390,7 @@
           }
         }
       },
-      "checked_at": "2026-11-24T20:58:34+00:00",
+      "checked_at": "2026-11-25T12:32:15+00:00",
       "status": "ok",
       "source_urls": [
         "https://metropole.toulouse.fr/annuaire/piscine-castex"
@@ -398,7 +398,7 @@
     },
     "chapou": {
       "periods": {},
-      "checked_at": "2026-11-24T20:58:35+00:00",
+      "checked_at": "2026-11-25T12:32:16+00:00",
       "status": "ok",
       "source_urls": [
         "https://metropole.toulouse.fr/annuaire/piscine-chapou-ete"
@@ -666,7 +666,7 @@
           }
         }
       },
-      "checked_at": "2026-11-24T20:58:36+00:00",
+      "checked_at": "2026-11-25T12:32:17+00:00",
       "status": "ok",
       "source_urls": [
         "https://metropole.toulouse.fr/annuaire/piscine-jean-boiteux-espace-job"
@@ -805,7 +805,7 @@
           }
         }
       },
-      "checked_at": "2026-11-24T20:58:37+00:00",
+      "checked_at": "2026-11-25T12:32:18+00:00",
       "status": "ok",
       "source_urls": [
         "https://metropole.toulouse.fr/annuaire/piscine-leo-lagrange"
@@ -920,7 +920,7 @@
           }
         }
       },
-      "checked_at": "2026-11-24T20:58:39+00:00",
+      "checked_at": "2026-11-25T12:32:19+00:00",
       "status": "ok",
       "source_urls": [
         "https://metropole.toulouse.fr/annuaire/piscine-alfred-nakache-hiver",
@@ -1052,7 +1052,7 @@
           }
         }
       },
-      "checked_at": "2026-11-24T20:58:40+00:00",
+      "checked_at": "2026-11-25T12:32:20+00:00",
       "status": "ok",
       "source_urls": [
         "https://metropole.toulouse.fr/annuaire/piscine-papus"
@@ -1065,15 +1065,15 @@
           "schedule": {
             "mon": [
               [
-                "12:00",
-                "14:00"
-              ],
-              [
-                "16:00",
+                "09:00",
                 "19:00"
               ]
             ],
             "tue": [
+              [
+                "09:00",
+                "11:00"
+              ],
               [
                 "12:00",
                 "14:00"
@@ -1092,24 +1092,16 @@
             "thu": [
               [
                 "07:00",
-                "09:00"
+                "11:00"
               ],
               [
                 "12:00",
-                "14:00"
-              ],
-              [
-                "16:00",
                 "19:00"
               ]
             ],
             "fri": [
               [
                 "12:00",
-                "14:00"
-              ],
-              [
-                "16:00",
                 "19:00"
               ]
             ],
@@ -1269,7 +1261,7 @@
           }
         }
       },
-      "checked_at": "2026-11-24T20:58:41+00:00",
+      "checked_at": "2026-11-25T12:32:20+00:00",
       "status": "ok",
       "source_urls": [
         "https://metropole.toulouse.fr/annuaire/piscine-toulouse-lautrec"
@@ -1392,7 +1384,7 @@
           }
         }
       },
-      "checked_at": "2026-11-24T20:58:42+00:00",
+      "checked_at": "2026-11-25T12:32:21+00:00",
       "status": "ok",
       "source_urls": [
         "https://metropole.toulouse.fr/annuaire/piscine-yvonne-godard"
@@ -1681,7 +1673,7 @@
           }
         }
       },
-      "checked_at": "2026-11-24T20:58:44+00:00",
+      "checked_at": "2026-11-25T12:32:23+00:00",
       "status": "ok",
       "source_urls": [
         "https://www.ville-lunion.fr/sortir-bouger/piscine-municipale/"
@@ -1784,7 +1776,7 @@
           }
         }
       },
-      "checked_at": "2026-11-24T20:58:46+00:00",
+      "checked_at": "2026-11-25T12:32:24+00:00",
       "status": "ok",
       "source_urls": [
         "https://www.mairie-blagnac.fr/piscine-des-ramiers-et-activites"
@@ -1934,7 +1926,7 @@
           }
         }
       },
-      "checked_at": "2026-11-24T20:58:47+00:00",
+      "checked_at": "2026-11-25T12:32:25+00:00",
       "status": "ok",
       "source_urls": [
         "https://www.espacenautique-colomiers.com/infos-pratiques/horaires"
@@ -2248,7 +2240,7 @@
           }
         }
       },
-      "checked_at": "2026-11-24T20:58:47+00:00",
+      "checked_at": "2026-11-25T12:32:25+00:00",
       "status": "ok",
       "source_urls": [
         "https://www.castanet-tolosan.fr/creatrice/sports-et-loisirs/piscine-municipale-347.html"
@@ -2313,7 +2305,7 @@
           }
         }
       },
-      "checked_at": "2026-11-24T20:58:47+00:00",
+      "checked_at": "2026-11-25T12:32:25+00:00",
       "status": "ok",
       "source_urls": [
         "https://www.ramonville.fr/active/sport/piscine-alex-jany/"
@@ -2470,7 +2462,7 @@
           }
         }
       },
-      "checked_at": "2026-11-24T20:58:49+00:00",
+      "checked_at": "2026-11-25T12:32:26+00:00",
       "status": "ok",
       "source_urls": [
         "https://www.loasisdelaramee.fr/infos-pratiques/horaires-d-ouverture-au-public.html"
