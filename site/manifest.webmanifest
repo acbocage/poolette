@@ -1,13 +1,13 @@
 {
   "name": "Poolette",
   "short_name": "Poolette",
-  "description": "Est-ce que la piscine est ouverte ? Demande à Poolette !",
+  "description": "Envie de nager ? Demande à POOLETTE !",
   "lang": "fr",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
   "orientation": "portrait",
-  "background_color": "#0a6e8e",
+  "background_color": "#0F4C6B",
   "theme_color": "#0a6e8e",
   "icons": [
     { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png" },

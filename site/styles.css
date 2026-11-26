@@ -51,9 +51,11 @@ button, input, select { font: inherit; color: inherit; }
   padding: calc(14px + env(safe-area-inset-top)) 16px 10px;
 }
 .brand { display: flex; align-items: center; gap: 10px; min-width: 0; }
-.brand img { border-radius: 10px; flex: none; }
-.brand h1 { margin: 0; font-size: 22px; line-height: 1.1; letter-spacing: -.02em; }
-.brand p { margin: 2px 0 0; font-size: 12.5px; color: var(--muted); }
+.brand img { border-radius: 14px; flex: none; }
+@media (prefers-color-scheme: dark) { .brand img { box-shadow: 0 0 0 2px #8ED3C7; } }
+.brand h1 { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+.brand p { margin: 0; font-size: 13px; font-weight: 600; line-height: 1.35; color: var(--muted); }
+.loc { flex: none; }
 .loc {
   display: inline-flex; align-items: center; gap: 6px; border: 1px solid var(--line);
   background: var(--surface); border-radius: 999px; padding: 8px 12px; font-size: 13px;

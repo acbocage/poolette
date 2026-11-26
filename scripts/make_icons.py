@@ -1,84 +1,88 @@
 #!/usr/bin/env python3
-"""Génère les icônes PNG de Poolette (stdlib uniquement) à partir du même dessin que icon.svg."""
-import math
-import struct
-import zlib
+"""Génère les icônes de Poolette (« POOLETTE » en Bebas Neue au-dessus de Paulette qui nage).
+
+Écrit icon.svg (logo du site et favicon) puis les PNG de l'écran d'accueil.
+Le mot est vectorisé (police Bebas Neue, licence SIL OFL) : aucune police à charger.
+Dépendance pour les PNG : pip install cairosvg
+"""
 from pathlib import Path
 
 OUT = Path(__file__).resolve().parent.parent / "site" / "icons"
-C1, C2 = (10, 110, 142), (25, 182, 204)
-WHITE, GREEN = (255, 255, 255), (30, 158, 90)
+
+BONNET = "#F2A7B8"
+FOND = "#0F4C6B"
+EAU = "#2F86A6"
+ECUME = "#8ED3C7"
+TRAIT = "#12324A"
+PEAU = "#F3C9A8"
+TEXTE = "#FBF6EE"
+
+# « POOLETTE » en Bebas Neue, contours vectorisés (largeur 3264, hauteur de capitale 700, unités de police)
+MOT_L, MOT_H = 3264, 700
+MOT = "M41 -700H203Q285 -700 326.0 -656.0Q367 -612 367 -527V-458Q367 -373 326.0 -329.0Q285 -285 203 -285H151V0H41ZM203 -385Q230 -385 243.5 -400.0Q257 -415 257 -451V-534Q257 -570 243.5 -585.0Q230 -600 203 -600H151V-385ZM459 -166V-534Q459 -618 502.0 -664.0Q545 -710 626 -710Q707 -710 750.0 -664.0Q793 -618 793 -534V-166Q793 -82 750.0 -36.0Q707 10 626 10Q545 10 502.0 -36.0Q459 -82 459 -166ZM683 -159V-541Q683 -610 626 -610Q569 -610 569 -541V-159Q569 -90 626 -90Q683 -90 683 -159ZM899 -166V-534Q899 -618 942.0 -664.0Q985 -710 1066 -710Q1147 -710 1190.0 -664.0Q1233 -618 1233 -534V-166Q1233 -82 1190.0 -36.0Q1147 10 1066 10Q985 10 942.0 -36.0Q899 -82 899 -166ZM1123 -159V-541Q1123 -610 1066 -610Q1009 -610 1009 -541V-159Q1009 -90 1066 -90Q1123 -90 1123 -159ZM1347 -700H1457V-100H1638V0H1347ZM1731 -700H2031V-600H1841V-415H1992V-315H1841V-100H2031V0H1731ZM2220 -600H2105V-700H2445V-600H2330V0H2220ZM2624 -600H2509V-700H2849V-600H2734V0H2624ZM2942 -700H3242V-600H3052V-415H3203V-315H3052V-100H3242V0H2942Z"
+
+FLEUR = f"""<g id="fl">
+<circle cx="0" cy="-10" r="9" fill="#fff" stroke="{TRAIT}" stroke-width="2.5"/>
+<circle cx="9.5" cy="-3.1" r="9" fill="#fff" stroke="{TRAIT}" stroke-width="2.5"/>
+<circle cx="5.9" cy="8.1" r="9" fill="#fff" stroke="{TRAIT}" stroke-width="2.5"/>
+<circle cx="-5.9" cy="8.1" r="9" fill="#fff" stroke="{TRAIT}" stroke-width="2.5"/>
+<circle cx="-9.5" cy="-3.1" r="9" fill="#fff" stroke="{TRAIT}" stroke-width="2.5"/>
+<circle cx="0" cy="0" r="5.5" fill="#F6C945" stroke="{TRAIT}" stroke-width="2.5"/>
+</g>"""
+
+PAULETTE = f"""<ellipse cx="0" cy="30" rx="95" ry="112" fill="{PEAU}" stroke="{TRAIT}" stroke-width="4"/>
+<path d="M-105 62 C-122 -40 -80 -152 0 -152 C80 -152 122 -40 105 62 C96 74 80 70 78 52 C70 2 40 -20 0 -22 C-40 -20 -70 2 -78 52 C-80 70 -96 74 -105 62 Z" fill="{BONNET}" stroke="{TRAIT}" stroke-width="4"/>
+<use href="#fl" transform="translate(-66 -96) scale(1.45)"/>
+<use href="#fl" transform="translate(2 -122) scale(1.25)"/>
+<use href="#fl" transform="translate(66 -94) scale(1.45)"/>
+<use href="#fl" transform="translate(-92 -6) scale(0.95)"/>
+<use href="#fl" transform="translate(92 -6) scale(0.95)"/>
+<path d="M-66 30 L-104 22" stroke="{TRAIT}" stroke-width="7" stroke-linecap="round"/>
+<path d="M66 30 L104 22" stroke="{TRAIT}" stroke-width="7" stroke-linecap="round"/>
+<ellipse cx="-36" cy="30" rx="30" ry="21" fill="{ECUME}" stroke="{TRAIT}" stroke-width="4"/>
+<ellipse cx="36" cy="30" rx="30" ry="21" fill="{ECUME}" stroke="{TRAIT}" stroke-width="4"/>
+<path d="M-6 28 Q0 22 6 28" fill="none" stroke="{TRAIT}" stroke-width="4"/>
+<circle cx="-36" cy="32" r="6" fill="{TRAIT}"/>
+<circle cx="36" cy="32" r="6" fill="{TRAIT}"/>
+<path d="M-460 74 q25 -14 50 0 t50 0 t50 0 t50 0 t50 0 t50 0 t50 0 t50 0 t50 0 t50 0 t50 0 t50 0 t50 0 t50 0 t50 0 t50 0 t50 0 t50 0 t50 0 V400 H-260 Z" fill="{EAU}"/>
+<path d="M-460 74 q25 -14 50 0 t50 0 t50 0 t50 0 t50 0 t50 0 t50 0 t50 0 t50 0 t50 0 t50 0 t50 0 t50 0 t50 0 t50 0 t50 0 t50 0 t50 0 t50 0" fill="none" stroke="{ECUME}" stroke-width="5" stroke-linecap="round"/>
+<circle cx="132" cy="36" r="8" fill="none" stroke="{ECUME}" stroke-width="3"/>
+<circle cx="150" cy="8" r="5" fill="none" stroke="{ECUME}" stroke-width="3"/>
+<circle cx="-136" cy="28" r="6" fill="none" stroke="{ECUME}" stroke-width="3"/>"""
 
 
-def in_round_rect(x, y, r=112, size=512):
-    cx = min(max(x, r), size - r)
-    cy = min(max(y, r), size - r)
-    return (x - cx) ** 2 + (y - cy) ** 2 <= r * r
-
-
-def wave_hit(x, y, y0, a=26.0, period=240.0, x0=92.0, x1=420.0, half=15.0):
-    if x0 - half <= x <= x1 + half:
-        xc = min(max(x, x0), x1)
-        yc = y0 - a * math.sin(2 * math.pi * (xc - x0) / period)
-        slope = -a * 2 * math.pi / period * math.cos(2 * math.pi * (xc - x0) / period)
-        if x0 <= x <= x1:
-            return abs(y - yc) / math.sqrt(1 + slope * slope) <= half
-        return math.hypot(x - xc, y - yc) <= half
-    return False
-
-
-def pixel(x, y, maskable):
-    """x, y en repère 512. Retourne (r, g, b, a)."""
-    if not maskable and not in_round_rect(x, y):
-        return (0, 0, 0, 0)
-    t = (x + y) / 1024.0
-    bg = tuple(int(C1[i] + (C2[i] - C1[i]) * t) for i in range(3))
-    if maskable:  # contenu réduit à 80 % au centre (zone de sécurité)
-        x, y = (x - 256) / 0.8 + 256, (y - 256) / 0.8 + 256
-    d = math.hypot(x - 352, y - 170)
-    if d <= 34:
-        return GREEN + (255,)
-    if d <= 54:
-        return WHITE + (255,)
-    if wave_hit(x, y, 292):
-        return WHITE + (255,)
-    if wave_hit(x, y, 372):
-        return tuple(int(bg[i] * 0.3 + 255 * 0.7) for i in range(3)) + (255,)
-    return bg + (255,)
-
-
-def render(size, maskable=False, ss=2):
-    rows = []
-    scale = 512.0 / size
-    for py in range(size):
-        row = bytearray([0])
-        for px in range(size):
-            acc = [0, 0, 0, 0]
-            for sy in range(ss):
-                for sx in range(ss):
-                    r, g, b, a = pixel((px + (sx + 0.5) / ss) * scale, (py + (sy + 0.5) / ss) * scale, maskable)
-                    acc[0] += r * a; acc[1] += g * a; acc[2] += b * a; acc[3] += a
-            n = ss * ss
-            if acc[3] == 0:
-                row += bytes((0, 0, 0, 0))
-            else:
-                row += bytes((acc[0] // acc[3], acc[1] // acc[3], acc[2] // acc[3], acc[3] // n))
-        rows.append(bytes(row))
-    return rows
-
-
-def write_png(path, size, rows):
-    def chunk(tag, data):
-        c = struct.pack(">I", len(data)) + tag + data
-        return c + struct.pack(">I", zlib.crc32(tag + data) & 0xFFFFFFFF)
-    png = b"\x89PNG\r\n\x1a\n" + chunk(b"IHDR", struct.pack(">IIBBBBB", size, size, 8, 6, 0, 0, 0))
-    png += chunk(b"IDAT", zlib.compress(b"".join(rows), 9)) + chunk(b"IEND", b"")
-    path.write_bytes(png)
+def svg(full_bleed=False, zoom=1.0):
+    """full_bleed : carré plein (iOS et Android arrondissent eux-mêmes). zoom < 1 : zone de sécurité."""
+    rx = 0 if full_bleed else 112
+    k = 360 / MOT_L  # le mot occupe 360 px de large
+    return f"""<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+<title>Poolette</title>
+<defs>
+{FLEUR}
+<clipPath id="c"><rect width="512" height="512" rx="{rx}"/></clipPath>
+</defs>
+<g clip-path="url(#c)">
+<rect width="512" height="512" fill="{FOND}"/>
+<g transform="translate(256 256) scale({zoom}) translate(-256 -256)">
+<path transform="translate(76 {50 + MOT_H * k:.1f}) scale({k:.5f})" fill="{TEXTE}" d="{MOT}"/>
+<g transform="translate(256 320) scale(1.12)">
+{PAULETTE}
+</g>
+</g>
+</g>
+</svg>
+"""
 
 
 if __name__ == "__main__":
     OUT.mkdir(parents=True, exist_ok=True)
-    for name, size, mask in (("icon-192.png", 192, False), ("icon-512.png", 512, False),
-                             ("icon-maskable-512.png", 512, True), ("apple-touch-icon.png", 180, True)):
-        write_png(OUT / name, size, render(size, mask))
+    (OUT / "icon.svg").write_text(svg(), encoding="utf-8")
+    print("écrit icon.svg")
+    import cairosvg
+    for name, size, full, zoom in (("icon-192.png", 192, False, 1.0),
+                                   ("icon-512.png", 512, False, 1.0),
+                                   ("icon-maskable-512.png", 512, True, 0.8),
+                                   ("apple-touch-icon.png", 180, True, 0.9)):
+        cairosvg.svg2png(bytestring=svg(full, zoom).encode(), write_to=str(OUT / name),
+                         output_width=size, output_height=size)
         print("écrit", name)

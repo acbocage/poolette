@@ -1,6 +1,6 @@
 # Poolette
 
-*Est-ce que la piscine est ouverte ? Demande à Poolette !*
+*Envie de nager ? Demande à Poolette !*
 
 Application web mobile (PWA) qui indique quelles piscines municipales sont **ouvertes au public** autour de toi, jusqu'à quelle heure, pour maintenant, aujourd'hui, demain ou une date choisie (avec plage horaire). Cahier des charges : [cahier-des-charges.md](cahier-des-charges.md).
 
