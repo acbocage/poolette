@@ -1,36 +1,12 @@
 {
-  "updated": "2026-11-25",
+  "updated": "2026-11-26",
   "exceptions": [
-    {
-      "pool_id": "bellevue",
-      "from": "2026-11-25",
-      "to": "2026-11-25",
-      "type": "closed",
-      "note": "Bassin intérieur fermé de 12h30 à 17h (manifestation sportive)",
-      "source": "llm"
-    },
-    {
-      "pool_id": "bellevue",
-      "from": "2026-09-17",
-      "to": "2027-06-21",
-      "type": "closed",
-      "note": "Petit bassin nordique fermé pour la saison hivernale ; réouverture à l'arrivée de l'été 2027 (date exacte non précisée)",
-      "source": "llm"
-    },
     {
       "pool_id": "alban-minville",
       "from": "2026-11-29",
       "to": "2026-11-29",
       "type": "closed",
-      "note": "Fermeture toute la journée (manifestation sportive)",
-      "source": "llm"
-    },
-    {
-      "pool_id": "alban-minville",
-      "from": "2026-11-30",
-      "to": "2026-11-30",
-      "type": "closed",
-      "note": "Fermée de 7h à 9h seulement (manifestation sportive)",
+      "note": "Manifestation sportive, fermeture toute la journée",
       "source": "llm"
     }
   ]
