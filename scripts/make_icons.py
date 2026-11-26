@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
-"""Génère les icônes de Poolette (« POOLETTE » en Bebas Neue au-dessus de Paulette qui nage).
+"""Génère les icônes de Poolette (Paulette qui nage, bonnet à fleurs rétro, sans texte).
 
 Écrit icon.svg (logo du site et favicon) puis les PNG de l'écran d'accueil.
-Le mot est vectorisé (police Bebas Neue, licence SIL OFL) : aucune police à charger.
+MOT garde le mot POOLETTE vectorisé (Bebas Neue, licence SIL OFL) pour une éventuelle version avec texte.
 Dépendance pour les PNG : pip install cairosvg
 """
+import re
 from pathlib import Path
 
 OUT = Path(__file__).resolve().parent.parent / "site" / "icons"
@@ -51,10 +52,27 @@ PAULETTE = f"""<ellipse cx="0" cy="30" rx="95" ry="112" fill="{PEAU}" stroke="{T
 <circle cx="-136" cy="28" r="6" fill="none" stroke="{ECUME}" stroke-width="3"/>"""
 
 
+# Paulette agrandie et arrondie : élargie (SX) plus que haute (SY), sans le mot.
+SX, SY, CY = 1.85, 1.52, 294.5   # échelle horizontale, verticale, centre vertical (repère 512)
+NIVEAU_EAU = 408.8               # hauteur de la ligne d'eau dans le repère 512
+
+
+def paulette_ronde():
+    """Le dessin, avec fleurs et pupilles compensées pour rester rondes malgré l'élargissement."""
+    k = SY / SX
+    d = PAULETTE
+    d = re.sub(r'(<use href="#fl" transform="translate\([^)]*\) scale\()([\d.]+)\)',
+               lambda m: f"{m.group(1)}{float(m.group(2)) * k:.3f} {m.group(2)})", d)
+    d = re.sub(r'<circle cx="(-?\d+)" cy="32" r="6" fill="([^"]+)"/>',
+               lambda m: f'<ellipse cx="{m.group(1)}" cy="32" rx="{6 * k:.2f}" ry="6" fill="{m.group(2)}"/>', d)
+    d = re.sub(r'<circle cx="[-\d]+" cy="\d+" r="\d+" fill="none"[^>]*/>\n?', "", d)  # pas de bulles
+    d = d.replace('stroke-width="4"', 'stroke-width="3.5"')
+    return d.replace("M-460 74 ", f"M-460 {(NIVEAU_EAU - CY) / SY:.1f} ")
+
+
 def svg(full_bleed=False, zoom=1.0):
     """full_bleed : carré plein (iOS et Android arrondissent eux-mêmes). zoom < 1 : zone de sécurité."""
     rx = 0 if full_bleed else 112
-    k = 360 / MOT_L  # le mot occupe 360 px de large
     return f"""<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
 <title>Poolette</title>
 <defs>
@@ -64,9 +82,8 @@ def svg(full_bleed=False, zoom=1.0):
 <g clip-path="url(#c)">
 <rect width="512" height="512" fill="{FOND}"/>
 <g transform="translate(256 256) scale({zoom}) translate(-256 -256)">
-<path transform="translate(76 {50 + MOT_H * k:.1f}) scale({k:.5f})" fill="{TEXTE}" d="{MOT}"/>
-<g transform="translate(256 320) scale(1.12)">
-{PAULETTE}
+<g transform="translate(256 {CY}) scale({SX} {SY})">
+{paulette_ronde()}
 </g>
 </g>
 </g>
